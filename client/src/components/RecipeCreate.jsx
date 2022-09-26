@@ -77,7 +77,7 @@ export default function CreateRecipe() {
         <div className={styles.bkg}>
             <div className={styles.container}>
                 <Link to='/home' ><button className={styles.btn}>Back to the main page</button></Link>
-                <h1 className={styles.h1}>Create your recipe</h1>
+                {/* <h1 className={styles.h1}>Create your recipe</h1> */}
                 <form onSubmit={(e) => { handleSubmit(e) }} className={styles.form}>
                     <div>
                         <label>name:</label>

@@ -19,14 +19,18 @@
     width: 10cm;
     border-radius: 18px;
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);  
-    margin-right: 60%;  
+    margin-right: 60%;
+    margin-left: 2%;  
 }
 .typ{
     background-color:rgb(212, 212, 158) ;
     border-radius: 20px;
     padding: 10px;
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
-    font-family: italic;
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: -20% 1% 20% 40%;
 }
 .typ2{
   background-color:rgb(212, 212, 158) ;
@@ -35,7 +39,7 @@
   box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
   font-family: italic;
   font-size: larger;
-  margin: 0% 50% 0% 0%;
+  margin: 0% 65% 0% 1%;
 
 }
 
@@ -45,7 +49,8 @@
     /* padding: 5px; */
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
     font-family: italic;
-    margin: -5% 10% 5% 35%;
+    font-weight: lighter;
+    margin: -30% 1% 5% 36%;
 }
 
 .btn {
@@ -58,6 +63,7 @@
     background: #f7eac3;
     /* padding: 10px 30px 10px 30px; */
     display: flex;
+    margin: 0% 0% 0% 2%;
     /* justify-content: start;
     flex-direction: row;
     text-decoration: none; */
@@ -87,3 +93,20 @@
   background-size: cover;
   background-repeat: repeat;
 }
+
+/* .btn {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: italic;
+  color: #000000;
+  font-size: 17px;
+  background: #f7eac3;
+  padding: 10px 30px 10px 30px;
+  display: flex;
+  margin: 0% 0% 0% 2%;
+  justify-content: start;
+  flex-direction: row;
+  text-decoration: none; 
+   margin: 0% 0% 0% 0%;
+} */

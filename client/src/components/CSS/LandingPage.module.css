@@ -1,5 +1,5 @@
 .landing{
-    background-image: url('../../pictures/Lback.png');
+    background-image: url('../../pictures/foodback.gif');
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -11,27 +11,30 @@
 }
 
 .wlc{
-    color: lightyellow;
+    color: #d4f7f9;
+    text-shadow: #29d6e2c5;
     font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: auto;
     position:relative;
     font-size: 115px;
-    background-color: rgb(123, 184, 123);
+    background-color: rgba(0, 247, 214, 0);
 }
 
 .btn {
     cursor: pointer;
-    background: #56c79a;
+    background: #d4f7f9;
    
   
     border-radius: 15px;
     font-style: italic;
 
-    color: #ffffff;
+    color: rgb(0, 0, 0);
     font-size: 23px;
     padding: 9px 23px 9px 23px;
     text-decoration: none;
     position:relative;
-    margin-top: 5%;
+    margin-top: 15%;
   }
   
   .btn:hover {

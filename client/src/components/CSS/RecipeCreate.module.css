@@ -9,8 +9,8 @@
     left: 0;
     position:fixed;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: grid;
+    justify-content: space-around;
     align-items: center;
     
 }
