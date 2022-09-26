@@ -111,6 +111,7 @@ export default function Home() {
                         <option value="paleolithic">Paleolithic</option>
                         <option value="primal">Primal</option>
                         <option value="whole 30">Whole 30</option>
+                        {/* <option value="createdRecipe">Created-Recipes</option> */}
                     </select>
                 </div>
             </div>
@@ -129,10 +130,10 @@ export default function Home() {
                         return (
                             <Link to={'/recipes/' + e.id}>
                                 <Card title={e.title} image={e.image}
-                                    Diets={e.Diets}
+                                    healthScore={e.healthScore}
+                                    diets={e.diets}
                                     key={e.id} />
                             </Link>
-
                         )
                     })
                 }

@@ -21,8 +21,17 @@
     list-style-type: none;
     display: flex;
     justify-content: center;
-    gap: 10px;
-    color: rgb(24, 24, 24);
+    gap: 25px;
+    color: rgba(0, 247, 214, 0.658);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.568);  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+    font-size: medium;
+}
+.ul:hover{
+    cursor: pointer;
+    transform: scale(1.10);
+    transition: all 0.5s;
 }
 .container {
     display: flex;

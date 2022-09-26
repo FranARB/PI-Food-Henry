@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getDiets, postRecipes } from "../actions/index.js";
+import { getDiets, getRecipes, postRecipes } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import styles from './CSS/RecipeCreate.module.css'
@@ -13,7 +13,7 @@ function CreationForm(input) {
 
     if (!input.tittle) error.tittle = 'Introduce a tittle for your meal'
     if (!input.summary) error.summary = 'Introduce a summary for your meal'
-    if (!input.spoonacularScore < 0 || !input.spoonacularScore > 100 || !register.test(input.spoonacularScore)) error.spoonacularScore = 'puntuation between 0 - 100'
+    // if (!input.spoonacularScore < 0 || !input.spoonacularScore > 100 || !register.test(input.spoonacularScore)) error.spoonacularScore = 'puntuation between 0 - 100'
     if (!input.healthScore < 0 || !input.healthScore > 100 || !register.test(input.healthScore)) error.healthScore = 'healthScore between 0-100'
     return error
 }
@@ -26,9 +26,10 @@ export default function CreateRecipe() {
     const [input, setInput] = useState({
         title: '',
         summary: '',
-        spoonacularScore: '',
-        healthScore: '',
         analyzedInstructions: '',
+        healthScore: '',
+        image: '',
+        dishTypes: '',
         diets: []
     })
     // console.log(input);
@@ -58,9 +59,10 @@ export default function CreateRecipe() {
         setInput({
             title: '',
             summary: '',
-            spoonacularScore: '',
-            healthScore: '',
             analyzedInstructions: '',
+            healthScore: '',
+            image: '',
+            dishTypes: '',
             diets: []
         })
     }
@@ -75,7 +77,7 @@ export default function CreateRecipe() {
         <div className={styles.bkg}>
             <div className={styles.container}>
                 <Link to='/home' ><button className={styles.btn}>Back to the main page</button></Link>
-                <h1 className={styles.h1}>Create you recipe</h1>
+                <h1 className={styles.h1}>Create your recipe</h1>
                 <form onSubmit={(e) => { handleSubmit(e) }} className={styles.form}>
                     <div>
                         <label>name:</label>
@@ -102,15 +104,27 @@ export default function CreateRecipe() {
                         )}
                     </div>
                     <div>
-                        <label>puntuation:</label>
+                        <label>Image:</label>
                         <input
                             type='text'
-                            name='spoonacularScore'
-                            value={input.spoonacularScore}
+                            name='image'
+                            value={input.image}
                             onChange={(e) => { handleChange(e) }}
                         />
-                        {errors.spoonacularScore && (
-                            <p className={styles.error}>{errors.spoonacularScore}</p>
+                        {errors.image && (
+                            <p className={styles.error}>{errors.image}</p>
+                        )}
+                    </div>
+                    <div>
+                        <label>DishTypes:</label>
+                        <input
+                            type='text'
+                            name='dishTypes'
+                            value={input.dishTypes}
+                            onChange={(e) => { handleChange(e) }}
+                        />
+                        {errors.image && (
+                            <p className={styles.error}>{errors.dishTypes}</p>
                         )}
                     </div>
                     <div>
@@ -142,7 +156,7 @@ export default function CreateRecipe() {
                         })}
 
                     </select >
-                    {errors.hasOwnProperty('title') || errors.hasOwnProperty('summary') || errors.hasOwnProperty('spoonacularScore') || errors.hasOwnProperty('healthScore') ? <p className={styles.adv}> please complete all the inputs to create your recipe</p> : <button type='submit' className={styles.correct}> Create Recipe</button>}
+                    {errors.hasOwnProperty('title') || errors.hasOwnProperty('summary') || errors.hasOwnProperty('healthScore') ? <p className={styles.adv}> please complete all the inputs to create your recipe</p> : <button type='submit' className={styles.correct}> Create Recipe</button>}
 
                 </form>
 

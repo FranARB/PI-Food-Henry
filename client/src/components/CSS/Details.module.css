@@ -1,23 +1,25 @@
 .dt{
     background-image: url('../../pictures/VSCIbackground.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat;
     background-attachment:fixed;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    display: flex;
+    display: grid;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 .image{
     height: 8cm;
     width: 10cm;
     border-radius: 18px;
-    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
+    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);  
+    margin-right: 60%;  
 }
 .typ{
     background-color:rgb(212, 212, 158) ;
@@ -26,12 +28,24 @@
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
     font-family: italic;
 }
+.typ2{
+  background-color:rgb(212, 212, 158) ;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
+  font-family: italic;
+  font-size: larger;
+  margin: 0% 50% 0% 0%;
+
+}
+
 .title{
     background-color:rgb(218, 146, 146) ;
     border-radius: 20px;
-    padding: 10px;
+    /* padding: 5px; */
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
     font-family: italic;
+    margin: -5% 10% 5% 35%;
 }
 
 .btn {
@@ -42,8 +56,12 @@
     color: #000000;
     font-size: 17px;
     background: #f7eac3;
-    padding: 10px 30px 10px 30px;
-    text-decoration: none;
+    /* padding: 10px 30px 10px 30px; */
+    display: flex;
+    /* justify-content: start;
+    flex-direction: row;
+    text-decoration: none; */
+    /* margin: 0% 0% 0% 0%; */
   }
   
   .btn:hover {
@@ -56,3 +74,16 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .steps{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+.back{
+  background-image: url('../../pictures/loading.gif');
+  background-attachment:fixed;
+  background-size: cover;
+  background-repeat: repeat;
+}
