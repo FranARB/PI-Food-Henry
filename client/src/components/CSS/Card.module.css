@@ -34,18 +34,27 @@
     justify-content: space-around;
     text-align: center;
     flex-direction: row;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: small;
     margin: 0.25cm;
     padding: 1px;
-    color: rgba(31, 27, 250, 0.89);
-    background-color: rgba(245, 245, 245, 0.219);
+    color: rgba(143, 248, 243, 0.938);
+    background-color: rgba(245, 245, 245, 0.075);
+    border-radius: 10px;
 }
+
 .ti{
-    background-color: rgba(245, 245, 245, 0.219);
+    background-color: rgba(245, 245, 245, 0.150);
     font-style: oblique;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align:center;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
     flex-direction: row;
     justify-content: space-around;
     display: flex;
-    color: rgba(31, 27, 250, 0.89);
+    font-weight: bolder;
+    font-size: larger;
+    color: rgb(2, 0, 112);
+    border-radius: 20px;
 }

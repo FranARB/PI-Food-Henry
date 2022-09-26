@@ -88,14 +88,16 @@ export default function Home() {
                 <div className={styles.filt}>
 
                     <select onChange={e => handleSort(e)} className={styles.select}>
+                        <option value="random">choose your order</option>
                         <option value="asc">ascendent(A-Z)</option>
                         <option value="des">descendent(Z-A)</option>
                     </select>
                 </div>
                 <div>
                     <select onChange={e => handlePoints(e)} className={styles.select}>
-                        <option value="mayormenor">mayor a menor por puntuacion</option>
-                        <option value="menormayor">menor a mayor por puntuacion</option>
+                        <option value="random">choose your order</option>
+                        <option value="mayormenor">major to minor by health</option>
+                        <option value="menormayor">minor to major by health</option>
                     </select>
                 </div>
                 <div>
