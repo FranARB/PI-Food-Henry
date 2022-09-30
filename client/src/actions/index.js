@@ -7,6 +7,7 @@ const ORDER_POINTS = 'ORDER_POINTS';
 const GET_NAME = 'GET_NAME';
 const GET_ID = 'GET_ID';
 const GET_DIETS = 'GET_DIETS';
+const DELETE_RECIPE = 'DELETE_RECIPE';
 // const FILTER_BY_RECIPE = 'FILTER_BY_RECIPE';
 
 export function getRecipes(){
@@ -52,6 +53,7 @@ export function orderPoint(payload){
 export function getName(name){
     return async function(dispatch){
         var json = await axios.get(`http://localhost:3001/recipes?name=${name}`)
+        console.log("action esto es capo",json.data)
         return dispatch({
             type: GET_NAME,
             payload: json.data
@@ -72,7 +74,7 @@ export function getID(id){
 export function getDiets(){
     return async function (dispatch){
         var json = await axios.get(`http://localhost:3001/diets`)
-        console.log(json.data)
+        // console.log(json.data)
         return dispatch({
             type: GET_DIETS,
             payload: json.data
@@ -86,3 +88,14 @@ export function postRecipes(payload){
         return json;
     }
 }
+
+export function deleteRecipe(id) {
+    return async (dispatch) => {
+      try {
+        const response = await axios.delete(`${axios.defaults.baseURL}/api/recipes/${id}`);
+        dispatch({ type: DELETE_RECIPE, payload: response.data });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }

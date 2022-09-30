@@ -79,7 +79,7 @@ function rootReducer(state = initialState, action) {
             }
 
         case 'GET_NAME':
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 recipes: action.payload

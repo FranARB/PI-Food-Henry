@@ -79,5 +79,20 @@ router.get('/diets', async (req, res) => {
     res.send(tt2)
 })
 
+router.delete('/:id', (req, res, next) => {
+    const id = req.params.id;
+    Recipe.destroy({
+      where: {
+        id
+      }
+    })
+      .then(() => {
+        res.send('Recipe deleted');
+      })
+      .catch((error) => {
+        next(error);
+      });
+  });
+
 
 module.exports = router;

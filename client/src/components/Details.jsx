@@ -1,21 +1,30 @@
 import React from "react";
-import {getID, getRecipes} from '../actions/index.js'
+import {getID, getRecipes, deleteRecipe} from '../actions/index.js'
 import { useParams } from "react-router";
 import {  useDispatch, useSelector} from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from './CSS/Details.module.css'
+import { useHistory } from 'react-router-dom';
 
 export default function Detail(props){
     const {id} = useParams();
     const disp = useDispatch();
     useEffect(() => {disp(getID(id))}, [id])
     const dState = useSelector((state) => state.details)
+
+    const history = useHistory();
+
     console.log('Estos son los detalles', dState)
 
 
-    // const stepss =  Array.isArray(dState.analyzedInstructions) ? dState.analyzedInstructions.map(e => e.steps.map(f => f.step)) : dState.analyzedInstructions
+    const handleDelete = () => {
+        disp(deleteRecipe(id));
+        alert('Recipe deleted');
+        history.push('/home');
+      };
 
+      
     
     const stepss = Array.isArray(dState.analyzedInstructions) ? dState.analyzedInstructions[0].steps.map(e => {return{number:e.number, step: e.step}}) : [dState.analyzedInstructions] 
 
@@ -44,9 +53,16 @@ export default function Detail(props){
              <h5 className={styles.typ2}>healthScore: {dState.healthScore}</h5>
              <h5 className={styles.typ}>summary: {dState.summary.replace(/<[^>]*>?/g, "")}</h5>
              <h5 className={styles.typ}>steps: <div className={styles.steps}>{ typeof stepss[0] === 'string' ? <span>{stepss}</span> : stepss && stepss.map(e => <span>paso {e.number} : {e.step}</span>)  }</div></h5>
+        
+             {id.length > 15 ? (
+          <button className="recipe-delete" onClick={() => handleDelete()}>
+            DELETE
+          </button>
+        ) : null}
+        
          </div> : 
          
-         <div> <h2 className={styles.back}> loading... </h2> </div>
+         <div> <h2 className={styles.back}></h2> </div>
   
       }
           </div>

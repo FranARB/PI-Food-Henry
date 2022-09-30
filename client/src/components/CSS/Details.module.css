@@ -88,10 +88,16 @@
     align-items: flex-start;
   }
 .back{
-  background-image: url('../../pictures/loading.gif');
+  background-image: url('../../pictures/LoadingFoodGif.gif');
   background-attachment:fixed;
   background-size: cover;
   background-repeat: repeat;
+  position: absolute;
+  padding: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 /* .btn {

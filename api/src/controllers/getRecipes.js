@@ -37,9 +37,9 @@ const apiKey = process.env.API_KEY;
 //obtención de la info de la DB
 
 
-const getAllRecipes = async () => {
+const getAllRecipes = async (title) => {
     // const recipeFromapi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=100&addRecipeInformation=true`);
-
+    
     const recipeFromapi = await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
 
     const recipeFromDB = await Recipe.findAll({include: {
@@ -47,12 +47,16 @@ const getAllRecipes = async () => {
         required: true
     }})
 
-    
-
     // console.log(recipeFromapi.data.results)
-        const recipesAandDB = [...recipeFromapi.data.results, ...recipeFromDB];
+        
+    const recipesAandDB = [...recipeFromapi.data.results, ...recipeFromDB];
+    if(title){
+        return [recipesAandDB.find(e => e.title.includes(title))]
+    }
     return recipesAandDB;
 }
+
+
 
 const detailById = async (id) => {
     // const detailID = await axios(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`)
