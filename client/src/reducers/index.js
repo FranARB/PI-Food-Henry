@@ -79,6 +79,7 @@ function rootReducer(state = initialState, action) {
             }
 
         case 'GET_NAME':
+            console.log(action.payload)
             return {
                 ...state,
                 recipes: action.payload
@@ -101,6 +102,31 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
             }
+
+    //         case 'FILTER_BY_RECIPE':
+    //         const recipesall = state.allRecipes
+    //         console.log(recipesall)
+
+    //         const recipefilter = action.payload === 'All' ? allrecipes : allrecipes.filter(tt => tt.recipes.includes(action.payload))
+    //         console.log(action.payload);
+    //         console.log(recipefilter)
+    //         return {
+    //             ...state,
+    //             recipes: recipefilter
+    //         }
+
+    // //         case FILTER_BY_CREATION:
+    // //   const videogames2 = state.allVideogames;
+    // //   const creationFilter =
+    // //     action.payload === 'All'
+    // //       ? videogames2
+    // //       : action.payload === 'created'
+    // //       ? videogames2.filter((game) => game.createdByUser)
+    // //       : videogames2.filter((game) => !game.createdByUser);
+    // //   return {
+    // //     ...state,
+    // //     videogames: creationFilter,
+    // //   };
 
         default:
             return state;

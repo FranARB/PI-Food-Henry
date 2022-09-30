@@ -36,6 +36,8 @@ export default function CreateRecipe() {
     useEffect(() => {
         dispatch(getDiets())
     }, [dispatch])
+
+
     function handleChange(e) {
         setInput({
             ...input,
@@ -46,7 +48,7 @@ export default function CreateRecipe() {
             [e.target.name]: e.target.value    // me copio todo lo que venga del formulario , en el caso de que en alguno
         }))                               // no cumpla con las validaciones, se va a poner un texto advirtiendo
     }
-    function handleSelect(e) {
+    function handleSelect(e) {      //recetas
         setInput({
             ...input,
             diets: [...input.diets, e.target.value]
@@ -66,6 +68,24 @@ export default function CreateRecipe() {
             diets: []
         })
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (!input.name) {
+    //       alert('Please enter a name');
+    //     } else {
+    //       dispatch(
+    //         createRecipePost({
+    //           ...input,
+    //           steps: [{ number: '', step: input.steps }]
+    //         })
+    //       );
+    //     }
+    //     alert('Recipe created');
+    //     history.push('/home');
+    //   }
+
+
     function handleDelete(e) {
         setInput({
             ...input,
@@ -122,6 +142,7 @@ export default function CreateRecipe() {
                             name='dishTypes'
                             value={input.dishTypes}
                             onChange={(e) => { handleChange(e) }}
+                            placeholder="Type of dish ex: 'Main Dish'"
                         />
                         {errors.image && (
                             <p className={styles.error}>{errors.dishTypes}</p>
@@ -130,9 +151,10 @@ export default function CreateRecipe() {
                     <div>
                         <label>healthScore:</label>
                         <input
-                            type='text'
+                            type='number'
                             name='healthScore'
                             value={input.healthScore}
+                            placeholder="numbers between 0 - 100"
                             onChange={(e) => { handleChange(e) }}
                         />
                         {errors.healthScore && (
@@ -145,6 +167,7 @@ export default function CreateRecipe() {
                             type='text'
                             name='analyzedInstructions'
                             value={input.analyzedInstructions}
+                            placeholder="Steps of recipe - 5 character or longer"
                             onChange={(e) => { handleChange(e) }}
                         />
                     </div>

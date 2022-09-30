@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getRecipes, filterDiet, orderName, orderPoint, getName } from "../actions";
+import { getRecipes, filterDiet, orderName, orderPoint, getName} from "../actions";
 import Card from './Card'
 import Paginado from './Paging'
 import styles from './CSS/Home.module.css'
@@ -42,6 +42,10 @@ export default function Home() {
     function handleFilterDiets(e) {
         dispatch(filterDiet(e.target.value))
     }
+
+    // function handleFilterRecipes(e) {
+    //     dispatch(filterRecipe(e.target.value))
+    // }
 
     function handleSort(e) {
         e.preventDefault()
@@ -88,14 +92,14 @@ export default function Home() {
                 <div className={styles.filt}>
 
                     <select onChange={e => handleSort(e)} className={styles.select}>
-                        <option value="random">choose your order</option>
+                        <option value="All">choose your order</option>
                         <option value="asc">ascendent(A-Z)</option>
                         <option value="des">descendent(Z-A)</option>
                     </select>
                 </div>
                 <div>
                     <select onChange={e => handlePoints(e)} className={styles.select}>
-                        <option value="random">choose your order</option>
+                        <option value="All">choose your order</option>
                         <option value="mayormenor">major to minor by health</option>
                         <option value="menormayor">minor to major by health</option>
                     </select>
@@ -105,17 +109,23 @@ export default function Home() {
                         <option value="All">All recipes</option>
                         <option value="gluten free">Gluten Free</option>
                         <option value="ketogenic">Ketogenic</option>
-                        <option value="vegetarian">Vegetarian </option>
-                        <option value="lacto-vegetarian">Lacto-Vegetarian </option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="lacto-vegetarian">Lacto-Vegetarian</option>
                         <option value="lacto ovo vegetarian">Ovo-Vegetarian</option>
                         <option value="vegan">Vegan</option>
                         <option value="pescatarian">Pescatarian</option>
                         <option value="paleolithic">Paleolithic</option>
                         <option value="primal">Primal</option>
                         <option value="whole 30">Whole 30</option>
-                        {/* <option value="createdRecipe">Created-Recipes</option> */}
                     </select>
                 </div>
+                {/* <div>
+                    <select onChange={e => handleFilterRecipes(e)} className={styles.select}>
+                        <option value="All">Recipes</option>
+                        <option value="api">Existing</option>
+                        <option value="Database">Created</option>
+                    </select>
+                </div> */}
             </div>
 
             <div className={styles.paging}>

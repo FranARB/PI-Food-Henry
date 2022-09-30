@@ -1,7 +1,7 @@
 const axios = require('axios');
-const { Recipe, TypeD } = require('../db');
+const { Recipe, Diet } = require('../db');
 const { sequelize } = require('sequelize');
-const Diet = require('../models/Diet');
+// const Diet = require('../models/Diet');
 const apiKey = process.env.API_KEY;
 
 //obtención de la info de la receta en API
@@ -42,49 +42,67 @@ const getAllRecipes = async () => {
 
     const recipeFromapi = await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
 
+    const recipeFromDB = await Recipe.findAll({include: {
+        model: Diet,
+        required: true
+    }})
+
+    
 
     // console.log(recipeFromapi.data.results)
-
-    return recipeFromapi.data.results;
+        const recipesAandDB = [...recipeFromapi.data.results, ...recipeFromDB];
+    return recipesAandDB;
 }
 
 const detailById = async (id) => {
-    const detailID = await axios(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`)
+    // const detailID = await axios(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`)
 
-    console.log(detailID.data)
+    // console.log(detailID.data)
 
-    // const deTtailid = detailID.data.results.map((e) => {
-    //     return{
-    //         id: e.id,
-    //         title: e.title,
-    //     summary: e.summary,
-    //     analyzardInstruction: e.analyzardInstruction,
-    //     helthScore: e.helthScore,
-    //     image: e.image,
-    //     dishTypes: e.dishTypes,
-    //     diets: [e.diets],
-    //     }
-    // })
-    // console.log(deTtailid)
-    // const mealFound = deTtailid.find((e) => e.id === Number(id));
-    // console.log(mealFound);
-    // if(!mealFound){
-    //     throw new Error('Recipe not found')
-    // }
-    // return mealFound;
+    // // const deTtailid = detailID.data.results.map((e) => {
+    // //     return{
+    // //         id: e.id,
+    // //         title: e.title,
+    // //     summary: e.summary,
+    // //     analyzardInstruction: e.analyzardInstruction,
+    // //     helthScore: e.helthScore,
+    // //     image: e.image,
+    // //     dishTypes: e.dishTypes,
+    // //     diets: [e.diets],
+    // //     }
+    // // })
+    // // console.log(deTtailid)
+    // // const mealFound = deTtailid.find((e) => e.id === Number(id));
+    // // console.log(mealFound);
+    // // if(!mealFound){
+    // //     throw new Error('Recipe not found')
+    // // }
+    // // return mealFound;
 
-    const detObj = {
-        id: detailID.data.id,
-        title: detailID.data.title,
-        summary: detailID.data.summary,
-        analyzedInstructions: detailID.data.analyzedInstructions,
-        healthScore: detailID.data.healthScore,
-        image: detailID.data.image,
-        dishTypes: detailID.data.dishTypes,
-        diets: [detailID.data.diets],
-    };
+    // const detObj = {
+    //     id: detailID.data.id,
+    //     title: detailID.data.title,
+    //     summary: detailID.data.summary,
+    //     analyzedInstructions: detailID.data.analyzedInstructions,
+    //     healthScore: detailID.data.healthScore,
+    //     image: detailID.data.image,
+    //     dishTypes: detailID.data.dishTypes,
+    //     diets: [detailID.data.diets],
+    // };
 
-    return detObj;
+    // // const rrDB = await 
+
+    // // const detObjAaDB={...detObj}
+
+    // return detObj;
+
+    const allrecADB = await getAllRecipes();
+        
+    const detailID = allrecADB.find(r => r.id.toString() === id)
+        console.log(detailID)
+
+    return detailID;
+
 }
 
 const createRecipe = async (
@@ -102,11 +120,14 @@ const createRecipe = async (
         analyzedInstructions,
         healthScore,
         image,
-        dishTypes
+        dishTypes,
+        diets
     })
 
-    // let dietTypeDb = await Diet.findAll({ where:{ name:diets } })
-    // newRecipe.addDiet(dietTypeDb)
+
+
+    let dietTypeDb = await Diet.findAll({ where:{ name:diets } })
+    newRecipe.addDiet(dietTypeDb)
 
 
     // console.log(newRecipe)

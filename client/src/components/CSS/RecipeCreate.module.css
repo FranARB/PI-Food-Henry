@@ -36,7 +36,7 @@
     border-radius: 20px;
     padding: 20px;
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
-    
+    margin: 15% 0% 0% 0%;
 }
 .correct{
     -webkit-border-radius: 10;
@@ -82,13 +82,13 @@
     text-decoration: none;
     cursor: pointer;
   }
-  .h1{
+  /* .h1{
     background-color:rgb(218, 146, 146) ;
     border-radius: 20px;
     padding: 10px;
     box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);    
     font-family: italic;
-  }
+  } */
 
   .types{
     background-color:rgb(218, 146, 146) ;

@@ -22,12 +22,22 @@ const router = Router();
 
 
 router.get('/recipes', async (req, res) => {
-    res.send(await getAllRecipes())
+    const {name} = req.query;
+    if(name){
+        res.send(await getAllRecipes(name))
+    }else{
+        res.send(await getAllRecipes())
+    }
 })
 
 router.get('/recipes/:id', async (req, res) => {
     const { id } = req.params;
-    res.send(await detailById(id))
+
+    try{
+        res.send(await detailById(id))
+    }catch(e){
+        console.log(e)
+    }
 
 })
 

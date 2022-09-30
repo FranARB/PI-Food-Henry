@@ -7,6 +7,7 @@ const ORDER_POINTS = 'ORDER_POINTS';
 const GET_NAME = 'GET_NAME';
 const GET_ID = 'GET_ID';
 const GET_DIETS = 'GET_DIETS';
+// const FILTER_BY_RECIPE = 'FILTER_BY_RECIPE';
 
 export function getRecipes(){
     return async function(dispatch){
@@ -23,6 +24,14 @@ export function filterDiet(payload){
         payload
     }
 }
+
+// export function filterRecipe(payload){
+//     return {
+//         type: FILTER_BY_RECIPE,
+//         payload
+//     }
+// }
+
 
 export function orderName(payload){
     return {
@@ -73,7 +82,7 @@ export function getDiets(){
 
 export function postRecipes(payload){
     return async function(dispatch){
-        var json = await axios.get(`http://localhost:3001/recipe`, payload)
+        var json = await axios.post(`http://localhost:3001/recipes`, payload)
         return json;
     }
 }
